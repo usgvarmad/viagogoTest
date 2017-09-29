@@ -3,7 +3,7 @@ This is the git project for Viagogo Test
 ***************************************************************************************************************************************************
 Assumptions made for the project:
 1. Coordinates can also be double (not only integers)
-2. "Each event has zero or more tickets." this was interpreted as each event can have different ticket types or categories like Gold or Silver etc.
+2. "Each event has zero or more tickets." this was interpreted as each event can have different ticket types (or categories) like Gold or Silver etc.
 3. Event with zero tickets was assumed as a free event with price 0.
 3. The program's inputs wouldn't cause the program to run out of memory and cause Memory out of Bound exceptions.
 4. The coordinates and distances were considered as double but while printing they were printed only upto 2 decimal points for aesthetic sense.
@@ -16,12 +16,12 @@ For eg: Target x = 0,
  		actual y = 1.2922222
  		Displayed y = 1.29
 
- 		Here the Distance you might calculate based in the displayed x and y would give you distance as 2.29 but I will be displaying the actual
+ 		Here the Distance you might calculate based on the displayed x and y values would give you distance as 2.29 but I will be displaying the actual
  		distance rounded to 2 digit precision which would give 1.30.
 
 
 Key Points:
-1. The program is written in such a way that the number of arguments can be increased and the program is ready to handle it by adding less code
+1. The program can take many number of arguments by minimal code changes.
 2. The program prints the inputs so that the user would have a refrence to cross check the results.
 3. K can be changed from 5 to anything below total number of points to play around with number of results we want.
 4. A jar file would be present inside the Target/jar folder. That jar can be used directly to run.
@@ -61,9 +61,7 @@ Instead of using Hashmap<Coordinates, Event>, I will be using Hashmap<Coordinate
 Answer: 1. Database connections needs to be made when we are considering data in huge amounts. 
 		2. Instead of uodating the database every time, I would try to maintain a small local copy of the data and push data in small Batches to reduce latency caused by database RW or database connection.
 		3. Data verification should be done thoroughly as it may create lot of exceptions. Cases in which no points corresponding to Event or Event corresponding to no point should be handled.
-		3. Scenario would change from one to one or one to many to many to many. Each location can hold multiple events and each event can be held at 
-		multiple locations. 
-		4. The complexity of the code should be further brought down.
+		4. The complexity of the code should be further brought down from O(nlogk).
 		
 
 
