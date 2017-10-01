@@ -2,17 +2,27 @@ package viagogoTest.main;
 
 import java.util.TreeMap;
 
-/*
+
+/**
  * This class serves as the skeleton for the Events and also used to generate random data for the Events
  * This class randomly generates the number of Ticket types (or categories) and the Ticket cost for each category
+ *
+ * @author uzval
  */
-
 public class Event {
 	private int ticketTypeNumber;
 	private TreeMap<Integer, Double> ticketCategoriesCostsMap = new TreeMap<Integer, Double>();
 	private double currentEventMinTicketCost;
 	private int eventNumber;
-
+	
+	/**
+	 * This is the constructor for Event Class.
+	 * @param eventNumber, a variable of type integer 
+	 * @param maxTicketTypes, a variable of type integer 
+	 * @param maxTicketCost, a variable of type integer 
+	 * @param minTicketCost, a variable of type integer 
+	 * @return None
+	 */
 	Event(int eventNumber, int maxTicketTypes, int minTicketTypes, int maxTicketCost, int minTicketCost) {
 		this.eventNumber = eventNumber;
 		double currentEventTicketTypeCostVariation;
@@ -39,18 +49,29 @@ public class Event {
 		}
 	}
 
-	// Getter method for getting the count of the least cost ticket for that
-	// particular event
+	/**
+	 * Getter method for getting the value of the least cost ticket for that particular event
+	 * @param None
+	 * @return a variable of type double
+	 */
 	public double getCurrentEventMinTicketCost() {
 		return currentEventMinTicketCost;
 	}
 
-	// Retrieves the Event number corresponding to the event
+	/**
+	 * Retrieves the Event number corresponding to the event
+	 * @param  None 
+	 * @return a variable of type int
+	 */
 	public int getEventNumber() {
 		return eventNumber;
 	}
 
-	// Retrieves the Ticket Category vs Cost for a Particular Event
+	/**
+	 * Retrieves a TreeMap which has Ticket Category vs Cost for a Particular Event
+	 * @param  None 
+	 * @return a variable of type TreeMap
+	 */
 	public TreeMap<Integer, Double> getTicketCategoriesCostsMap() {
 		return ticketCategoriesCostsMap;
 	}

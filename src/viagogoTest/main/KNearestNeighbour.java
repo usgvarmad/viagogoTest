@@ -3,22 +3,35 @@ package viagogoTest.main;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-/*
+/**
  * This class contains the method which implements max heap to find out the k- nearest neighbors and then it uses Heap sort to sort
  * the coordinates based on their distances
+ * 
+ * @author uzval
  */
+
 public class KNearestNeighbour {
 	private Coordinates coordinates[];
 	private Coordinates kNearestcoordinates[]; 
 	private int k;
 
-	//Constructor for kNearestcoordinates 
+	/**
+     * Constructor for kNearestcoordinates 
+     * @param  None
+     * 
+     * @return None
+     */
 	public KNearestNeighbour(Coordinates coordinates[], int k) {
 		this.coordinates = coordinates;
 		this.k = k;
 	}
 	
-	// This method performs the computations for maintaining the K- nearest neighbors in the PriorityQueue 
+	/**
+     * This method performs the computations for maintaining the K- nearest neighbors in the PriorityQueue 
+     * @param  None
+     * @return None
+     */
+	
 	public Coordinates[] getKNearestCoordinates() {
 		PriorityQueue<Coordinates> kClosest = new PriorityQueue<Coordinates>(k, Collections.reverseOrder());
 		for (int i = 0; i < coordinates.length; i++) {
@@ -35,7 +48,11 @@ public class KNearestNeighbour {
 	}
 	
 
-	// This is used to sort the K-Nearest output Array based on Distance
+	/**
+      * This is used to sort the K-Nearest output Array based on Distance and write it back to kNearestcoordinates array
+      *
+      * @return None
+      */
 	public void sort()
     {
         int n = kNearestcoordinates.length;
@@ -49,8 +66,15 @@ public class KNearestNeighbour {
             heapify(i, 0);
         }
     }
+		
 	
-	// This is used to sort the K-Nearest output Array based on Distance
+	 /**
+	   * This is used to sort the K-Nearest output Array based on Distance and write it back to kNearestcoordinates array
+	   * @param n, a variable of type int
+	   * @param n, a variable of type int
+	   * 
+	   * @return None
+	   */	
 	public void heapify( int n, int i)
     {
         int largest = i;  
