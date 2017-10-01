@@ -9,17 +9,13 @@ public class InputCoordinatesGenerator {
 	private int yMax;
 	private int xMin;
 	private int yMin;
-	private double xTarget;
-	private double yTarget;
 	
-	InputCoordinatesGenerator(int numberOfPoints, double xTarget, double yTarget,int xMax, int yMax, int xMin, int yMin) {
+	InputCoordinatesGenerator(int numberOfPoints, int xMax, int yMax, int xMin, int yMin) {
 		this.numberOfPoints = numberOfPoints;
 		this.xMax = xMax;
 		this.yMax = yMax;
 		this.xMin = xMin;
 		this.yMin = yMin;
-		this.xTarget = xTarget;
-		this.yTarget = yTarget;
 	}
 
 	//This is used for random number generation
@@ -31,9 +27,8 @@ public class InputCoordinatesGenerator {
 	public Coordinates[] generateInputCoordinatesArray() {
 		Coordinates coordinates[] = new Coordinates[numberOfPoints];
 		for (int i = 0; i < numberOfPoints; i++) {
-			coordinates[i] = new Coordinates(xTarget,yTarget, randomnumber(xMax, xMin), randomnumber(yMax, yMin));
+			coordinates[i] = new Coordinates(randomnumber(xMax, xMin), randomnumber(yMax, yMin));
 		}
 		return coordinates;
 	}
-
 }

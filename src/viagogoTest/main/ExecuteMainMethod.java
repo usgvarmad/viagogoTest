@@ -1,6 +1,7 @@
 package viagogoTest.main;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,42 +28,38 @@ public class ExecuteMainMethod {
 	private static int minTicketCost = 1;
 	private static Coordinates inputCoordinates[];
 	private static Coordinates kNearestCoordinates[];
+	private static String runTestAgainstNewTarget = "yes";
 	private static Map<Coordinates, Event> coordinateEventsMap = new HashMap<Coordinates, Event>();
 	// This map has the data structure required to keep Coordinates vs Events data
 	
-	public static void main(String args[]) {
-		
-		//Input the coordinates here. If there is error in input or number of points is less than points asked for. program would return nothing
-		if(!targetCoordinatesUserInput())
-		{
-			return;
-		} else if(numberOfPoints < k){
-			System.out.println("Not valid number of points. Always (N >= k)");
-			return;
-		}
-		
-			
+	public static void main(String args[]) {			
 		// Class that would generate random coordinates.
-		InputCoordinatesGenerator inputCoordinatesClassObject = new InputCoordinatesGenerator(numberOfPoints, xTarget, yTarget, xMax, yMax, xMin, yMin);
+		InputCoordinatesGenerator inputCoordinatesClassObject = new InputCoordinatesGenerator(numberOfPoints, xMax, yMax, xMin, yMin);
 		inputCoordinates = inputCoordinatesClassObject.generateInputCoordinatesArray();
 		
-		System.out.println("\n*********************************************Input*********************************************");
+		System.out.println("\n**********************************Auto Generated Input******************************************");
 		// Automatic Random Generation Events, Categories and their costs. Also printing the inputs during this loop
 		for (int i = 1; i <= inputCoordinates.length; i++) {
 			Event event = new Event(i,maxTicketTypes, minTicketTypes, maxTicketCost,minTicketCost);
 			coordinateEventsMap.put(inputCoordinates[i-1], event);
-			System.out.println("\nEvent No: " + event.getEventNumber() + ",\t("+ String.format("%.2f", inputCoordinates[i-1].getX())+", "+String.format("%.2f", inputCoordinates[i-1].getY())+"),\tDistance: " + String.format("%.2f", inputCoordinates[i-1].getDistance()));
+			System.out.println("\nEvent No: " + event.getEventNumber() + ",\t("+ String.format("%.2f", inputCoordinates[i-1].getX())+", "+String.format("%.2f", inputCoordinates[i-1].getY())+"),\tDistance from Origin: " + String.format("%.2f", inputCoordinates[i-1].getDistance()));
 			TreeMap<Integer, Double> ticketCategoryCostsMap = new TreeMap<Integer, Double>();
 			ticketCategoryCostsMap = event.getTicketCategoriesCostsMap();
 			for (Integer j : ticketCategoryCostsMap.keySet()) {
 				System.out.println("Category: " + j + ",\tCost: " + String.format("%.2f", ticketCategoryCostsMap.get(j)));
 			}
-		}
-		
+		}		
+		while(runTestAgainstNewTarget.equalsIgnoreCase("yes")){
+		//Input the coordinates here. If there is error in input or number of points is less than points asked for. program would return nothing
+		if(!targetCoordinatesUserInput())
+		{
+			return;
+		} 		
 		// Class that computes the KNearestNeighbour algorithm and gives back a coordinate array
 		KNearestNeighbour knearestNeighbourClassObject = new KNearestNeighbour(inputCoordinates, k);
 		kNearestCoordinates = knearestNeighbourClassObject.getKNearestCoordinates();
 		printOutputData();	
+		}		
 	}
 	
 	// Function for taking the Target Coordinates
@@ -82,12 +79,20 @@ public class ExecuteMainMethod {
 			{
 				System.out.println("Please enter inputs in range of 10 to -10");
 				return false;
-			} 			
+			} 
+			if(numberOfPoints < k){
+				System.out.println("Not valid number of points. Always (N >= k)");
+				return false;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Invalid Number Entered. Please enter a number in Integer or Double format\n\n");
 			e.printStackTrace();
 			return false;
+		}
+		for (Coordinates c : coordinateEventsMap.keySet())
+		{
+			c.updateTarget();
 		}
 		return true; 			
 	}
@@ -98,6 +103,17 @@ public class ExecuteMainMethod {
 		for (int i = 0; i < kNearestCoordinates.length; i++) { 
 			Event event = coordinateEventsMap.get(kNearestCoordinates[i]);
 			System.out.println("Event: "+event.getEventNumber()+"\tCost: "+String.format("%.2f", event.getCurrentEventMinTicketCost())+"\tDistance "+String.format("%.2f",kNearestCoordinates[i].getDistance())) ;
+		}
+		System.out.println("\nDo you want to try checking events near a new Location?(Type Yes or Anything else to quit)");
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		 try {
+			runTestAgainstNewTarget = br.readLine();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Wrong input entered");
+			runTestAgainstNewTarget = "No";
+			e.printStackTrace();
 		}
 	}
 }

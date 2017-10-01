@@ -1,7 +1,7 @@
 package viagogoTest.main;
 
 /*
- * This class carries the structure of the co-ordinates and is also used to override the compareTo method 
+ * This class carries the structure of the coordinates and is also used to override the compareTo method 
  */
 public class Coordinates implements Comparable<Coordinates> {
 	private double x;
@@ -10,9 +10,9 @@ public class Coordinates implements Comparable<Coordinates> {
 	private double yTarget;
 
 	// Constructor for Coordinates class
-	public Coordinates(double xTarget, double yTarget, double x, double y) {
-		this.xTarget = xTarget;
-		this.yTarget = yTarget;		
+	public Coordinates(double x, double y) {
+		this.xTarget = ExecuteMainMethod.xTarget;
+		this.yTarget = ExecuteMainMethod.yTarget;		
 		this.x = x;
 		this.y = y;
 		
@@ -23,7 +23,7 @@ public class Coordinates implements Comparable<Coordinates> {
 		return Math.abs(x - xTarget) + Math.abs(y - yTarget);
 	}
 
-	// Over rides Compareto Method to use getDistance for comparison
+	// Overrides CompareTo Method to use getDistance for comparison
 	@Override
 	public int compareTo(Coordinates newCoordinate) {
 
@@ -45,5 +45,10 @@ public class Coordinates implements Comparable<Coordinates> {
 	//Getter Method for Y coordinate
 	public double getY(){
 		return y;
+	}
+	
+	public void updateTarget(){
+		this.xTarget = ExecuteMainMethod.xTarget;
+		this.yTarget = ExecuteMainMethod.yTarget;
 	}
 }
