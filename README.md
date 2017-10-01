@@ -95,42 +95,40 @@ Eg: Below is a one sample run for input x = 2 and y = 2
 
 vagelos-ve503-0239:viagogoTest uzval$ java -jar target/jar/viagogoTest.jar 
 
-*********************************************Input*********************************************
+**********************************Auto Generated Input******************************************
 
-Event No: 1,	(6.73, -3.32),	Distance from Origin: 10.05
-Category: 1,	Cost: 1.80
-Category: 2,	Cost: 12.09
-
-Event No: 2,	(-8.12, -0.27),	Distance from Origin: 8.38
-Category: 1,	Cost: 4.69
-
-Event No: 3,	(5.93, 9.92),	Distance from Origin: 15.85
-Category: 1,	Cost: 41.76
-Category: 2,	Cost: 23.93
-
-Event No: 4,	(-2.55, 8.19),	Distance from Origin: 10.75
+Event No: 1,	(-9.98, 5.40),	Distance from Origin: 15.38
 Category: 0,	Cost: 0.00
 
-Event No: 5,	(-2.56, -8.01),	Distance from Origin: 10.57
+Event No: 2,	(5.59, 3.28),	Distance from Origin: 8.87
 Category: 0,	Cost: 0.00
 
-Event No: 6,	(6.60, 1.44),	Distance from Origin: 8.04
-Category: 1,	Cost: 44.57
+Event No: 3,	(-0.92, -2.48),	Distance from Origin: 3.40
+Category: 1,	Cost: 7.80
 
-Event No: 7,	(7.01, -2.46),	Distance from Origin: 9.47
-Category: 1,	Cost: 38.60
-Category: 2,	Cost: 47.45
+Event No: 4,	(5.58, -5.35),	Distance from Origin: 10.93
+Category: 1,	Cost: 16.66
+Category: 2,	Cost: 27.42
 
-Event No: 8,	(5.14, 7.47),	Distance from Origin: 12.62
+Event No: 5,	(-9.91, 10.09),	Distance from Origin: 20.00
+Category: 1,	Cost: 29.74
+
+Event No: 6,	(3.24, -7.63),	Distance from Origin: 10.88
+Category: 1,	Cost: 23.53
+
+Event No: 7,	(4.38, 7.95),	Distance from Origin: 12.33
 Category: 0,	Cost: 0.00
 
-Event No: 9,	(1.41, 10.32),	Distance from Origin: 11.73
-Category: 1,	Cost: 28.08
-Category: 2,	Cost: 9.59
+Event No: 8,	(-7.26, -5.32),	Distance from Origin: 12.58
+Category: 0,	Cost: 0.00
 
-Event No: 10,	(2.49, -0.14),	Distance from Origin: 2.63
-Category: 1,	Cost: 22.94
-Category: 2,	Cost: 34.65
+Event No: 9,	(-1.42, 10.84),	Distance from Origin: 12.26
+Category: 1,	Cost: 40.41
+Category: 2,	Cost: 44.63
+
+Event No: 10,	(3.72, -7.84),	Distance from Origin: 11.57
+Category: 1,	Cost: 45.93
+Category: 2,	Cost: 11.36
 
 Please enter the X and Y coordinates of your Location one by one  (Format: Integer or Double in range of 10 to -10 & Eg: 10 or 12.55)
 
@@ -141,10 +139,12 @@ Y Coordinate:
 
 *********************************************Output*********************************************
 
-Event: 10	Cost: 22.94	Distance 2.63
-Event: 6	Cost: 44.57	Distance 5.16
-Event: 8	Cost: 0.00	Distance 8.62
-Event: 9	Cost: 9.59	Distance 8.91
-Event: 7	Cost: 38.60	Distance 9.47
+Event: 2	Cost: 0.00	Distance 4.87
+Event: 3	Cost: 7.80	Distance 7.40
+Event: 7	Cost: 0.00	Distance 8.33
+Event: 6	Cost: 23.53	Distance 10.88
+Event: 4	Cost: 16.66	Distance 10.93
 
- Do you want to try checking events near a new Location?(Type Yes or Anything else to quit)
+Do you want to try checking events near a new Location?(Type Yes or Anything else to quit)
+No
+vagelos-ve503-0239:viagogoTest uzval$ 
